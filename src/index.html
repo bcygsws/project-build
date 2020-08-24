@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>使用webpack-隔行变色案例</title>
+        <!--打包前引入main.js文件，隔行变色的main.js代码没有生效，原因是main.js中使用了高级语法，需要webpack打包转换-->
+        <!--<script src="./index.js"></script>-->
+        <!--引入打包后的bundle.js文件，隔行变色代码生效了-->
+        <!--注意：当安装配置webpack-dev-server自动打包后，运行npm run dev会自动打包并自动打开html页面，但是bundle.js还需要手动引入-->
+        <!--已经不识别命令contentBase,改用host,"dev": "webpack-dev-server &#45;&#45;open &#45;&#45;port 8000 &#45;&#45;contentBase / &#45;&#45;hot"-->
+        <!--<script src="../dist/bundle.js"></script>-->
+        <!--安装html-webpack-plugin，它有两个作用：1.将html文件拷贝一份，托管在内存中2.将html托管时，会将bundle.js文件自动
+        追加到body关闭标签的前面-->
+
+    </head>
+    <body>
+        <!--这个placeholder中默认文本，若要修改其颜色，必须使用伪元素选择器::placeholder,但是它有兼容性问题-->
+        <input type="text" placeholder="测试">
+        <ul id="list">
+            <li>这是第1个li</li>
+            <li>这是第2个li</li>
+            <li>这是第3个li</li>
+            <li>这是第4个li</li>
+            <li>这是第5个li</li>
+            <li>这是第6个li</li>
+        </ul>
+        <div class="fat"></div>
+    </body>
+</html>

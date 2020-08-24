@@ -1,0 +1,30 @@
+#list {
+  li {
+    list-style: none;
+  }
+}
+
+.fat {
+  width: 500px;
+  height: 400px;
+  border: 2px solid #e92312;
+  background: url("../images/kirsten.jpg") no-repeat;
+  background-size: cover;
+}
+
+/*为placeholder占位符更改默认的文本颜色,这个伪元素有兼容性问题，在IE中不生效，为此需要做：
+1.安装包 postcss-loader autoprefixer
+2.配置postcss.config.js文件如下：
+    const autoprefixer=require('autoprefixer');
+    module.exports={
+      plugins:[autoprefixer]
+    };
+3.同时在.scss的loader列表最后新增一个'postcss-loader'加载器，本例是在scss 中书写的样式，在scss加载器后面加就可以了。
+但是为了通用性，在所有样式上都加上'postcss-loader'
+
+*/
+input {
+  &::placeholder {
+    color: red;
+  }
+}
