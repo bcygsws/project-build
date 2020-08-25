@@ -10,7 +10,8 @@
 ];
 module.exports = {presets};*/
 
-//1.配置的都是插件包 包名中有preset或者plugin的
+// 注意：升级到babel7.x后之前两套包的安装已经不适用了，babel-preset-state-0已经被废弃了
+//1.配置的都是插件包 包名中有preset或者plugin的，同时最好把presets和plugins中的组件名写完整
 //2.要了解babel的工作原理 https://www.jianshu.com/p/e9b94b2d52e2
 /*
 * babel核心包 babel-core 转译器本身 babylon js词法解析器  babel-traverse 对AST抽象语法树进行遍历   babel-generator 根据AST生成代码
@@ -22,7 +23,7 @@ module.exports = {presets};*/
 * */
 module.exports = {
     presets: [
-        "@babel/env"
+        "@babel/preset-env"
     ],
     plugins: [
         "@babel/plugin-transform-runtime", "@babel/plugin-proposal-class-properties"

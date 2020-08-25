@@ -4,7 +4,7 @@ import $ from 'jquery';
 //1.导入的是css文件
 // import './css/base.css';
 // 2.导入的是less文件
-// import './css/base.less';
+import './css/base.less';
 // 3.导入.scss文件
 import './css/base.scss';
 

@@ -23,8 +23,3 @@
 但是为了通用性，在所有样式上都加上'postcss-loader'
 
 */
-input {
-  &::placeholder {
-    color: red;
-  }
-}
