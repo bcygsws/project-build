@@ -6,6 +6,8 @@ const htmlPlugin = new htmlWebpackPlugin({
     //设置生成的预览页面名称
     filename: 'index.html'
 });
+//导入vue-loader加载器依赖的插件
+const vueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
     //development表示代码不会进行压缩和混淆，这样转换速度快一些
     //production表示处于产品发布模式，需要对代码进行压缩和混淆，转换时间要更长
@@ -18,6 +20,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
+        new vueLoaderPlugin(),
         htmlPlugin
     ],
     module: {
@@ -35,8 +38,11 @@ module.exports = {
             //处理scss|sass文件 安装包 node-sass sass-loader
             {test: /\.scss|sass$/, use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']},
 
-            /*注意；如果图片大小>=limit设定值则显示默认路径，图片大小<limit设定值才会转换成base64文件格式，base64这种
+            /*注意；
+            * 1.如果图片大小>=limit设定值则显示默认路径，图片大小<limit设定值才会转换成base64文件格式，base64这种
             * 图片格式加载更快一些
+            * 2.打包样式图片和字体图标文件
+            *
             * */
             //处理css与路径有关的文件---处理图片等文件还依赖file-loader,需要安装该包，不必在里面配置
             // {test: /\.bmp|png|jpg|gif|jpeg$/, use: 'url-loader'},
@@ -49,7 +55,15 @@ module.exports = {
             },
             //高级语法转化为低级语法
             {test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
+            //打包.vue文件
+            {test: /\.vue$/, use: 'vue-loader'}
         ]
+    },
+//为了让导入的vue包直接指向vue.js路径，起别名的方式设置路径指向
+    resolve: {
+        alias: {
+            vue$: 'vue/dist/vue.js'
+        }
     }
 
 };
